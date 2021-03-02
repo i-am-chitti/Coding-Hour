@@ -26,7 +26,10 @@ void solve(){
         }
         it++;
     }
-    cout<<ans<<"\n";
+    if(ans!=INT_MIN) 
+        cout<<ans<<"\n";
+    else 
+        cout<<"None\n";
 
 }
  
