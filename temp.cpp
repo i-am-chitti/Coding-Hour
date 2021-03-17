@@ -7,17 +7,19 @@ typedef long long ll;
 
 void solve(){
     vector<int> vec;
-    unordered_set<vector<int> > st;
+    int *arr;
+    int limit=1000000;
+    arr = new int[limit];
+    memset(arr,0,sizeof(arr)*limit);
+    //for(int i=0;i<20;i++) cout<<arr[i]<<" ";
+    arr[2]=3;
+    cout<<arr[2]<<" "<<arr[0];
 }
  
 
 int main()
 {
     fast_cin();
-    ll T;
-    cin >> T;
-    while(T--) {
-        solve();
-    }
+    solve();
     return 0;
 }

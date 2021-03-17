@@ -50,7 +50,7 @@ void HillCipher(string message, string key)
   
 int main() 
 { 
-    string message = "ACT"; 
+    string message = "HELLO"; 
   
     string key = "GYBNQKURP"; 
   
