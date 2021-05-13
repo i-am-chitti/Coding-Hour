@@ -1,52 +1,31 @@
-/*
-Author : Deepak Kumar
-UID: 18BCS2295
-*/
-#include <bits/stdc++.h>  
-#define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
+#include<bits/stdc++.h>
+
 using namespace std;
- 
-typedef long long ll;
- 
-bool isSumPossible(vector<int> &arr, int target) {
-    if(target==0) return 1;
-    else if(target<0) return 0;
-    for(int i=0;i<arr.size();i++) {
-        if(isSumPossible(arr,target-arr[i])) return 1;
-    }
-    return 0;
-}
 
-void allSums(vector<int> &arr, int target, vector<int> &temp, vector<vector<int>> &res, int i) {
-    if(target==0) res.push_back(temp);
-    else if(target<0) return;
-    while(i<arr.size() && target>=arr[i]) {
-        temp.push_back(arr[i]);
-        allSums(arr,target-arr[i],temp,res,i);
-        temp.pop_back();
-        i++;
-    }
-}
+#define ll long long int
 
-void solve(){
-    vector<int> arr{2,3,5};
-    int target = 8;
-    // if(isSumPossible(arr,target)) cout<<"YES\n";
-    // else cout<<"NO\n";
-    vector<int> temp;
-    vector<vector<int>> res;
-    allSums(arr,target,temp,res,0);
-    for(int i=0;i<res.size();i++) { 
-        for(int j=0;j<res[i].size();j++)
-            cout<<res[i][j]<<" ";
-        cout<<endl;
+int main() {
+    ll t;
+    cin>>t;
+    while(t--) {
+        double r, b;
+        cin>>r>>b;
+        double ans;
+        if(r==0) ans=1.000000;
+        else {
+            double sum=(double)(r/(r+b));
+            double last=1.0;
+            while(b>=2) {
+                last*=(double)(b/(r+b));
+                b--;
+                last*=(double)(b/(r+b));
+                b--;
+                double dum=(double)last;
+                dum*=(double)(r/(r+b));
+                sum+=(double)dum;
+            }
+            ans=(double)sum;
+        }
+        printf("%.6f\n", ans);
     }
-}
- 
-
-int main()
-{
-    fast_cin();
-        solve();
-    return 0;
 }
