@@ -1,62 +1,67 @@
-import java.util.Scanner;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+class Data {
+	TreeSet<String> set;
+	Data() {
+		this.set = new TreeSet<>();
+	}
+
+	void add(String str) {
+		this.set.add(str);
+	}
+
+	void traverse() {
+		Iterator<String> it = this.set.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+	}
+
+	boolean search(String query) {
+		Iterator<String> it = this.set.iterator();
+		
+		boolean result = false;
+		
+		while (it.hasNext()) {
+			if (it.next().equals(query)) {
+				result = true;
+				break;
+			}
+		}
+
+		return result;
+	}
+
+	void reverseTraverse() {
+		Iterator<String> it = this.set.descendingIterator();
+		while(it.hasNext())	{
+			System.out.println(it.next());
+		}
+	}
+
+}
 
 public class temp {
 
-	public static void main(String[] args) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		
-		for (int i = 0; i < 2; i++) {
-			String name = "";
-			int subA = 0;
-			int subB = 0;
-			int subC = 0;
-			
-			try {				
-				name = sc.nextLine();
-				
-				if (sc.hasNextInt())
-					subA = sc.nextInt();
-				else
-					throw new NumberFormatException();
-				
-				if (sc.hasNextInt())
-					subB = sc.nextInt();
-				else
-					throw new NumberFormatException();
-				
-				if (sc.hasNextInt())
-					subC = sc.nextInt();
-				else
-					throw new NumberFormatException();
-				
-				if (subA < 0) throw new NegativeValuesException();
-				if (subA > 100) throw new ValuesOutOfRangeException();
-				
-				if (subB < 0) throw new NegativeValuesException();
-				if (subB > 100) throw new ValuesOutOfRangeException();
-				
-				if (subC < 0) throw new NegativeValuesException();
-				if (subC > 100) throw new ValuesOutOfRangeException();
-				
-				
-			} catch (ArithmeticException e) {
-				System.out.println(e.getMessage());
-			} catch (NegativeValuesException e) {
-				System.out.println(e.getMessage());
-			} catch (ValuesOutOfRangeException e) {
-				System.out.println(e.getMessage());
-			}
-			
-			System.out.println("Name: " + name);
-			System.out.println("Marks of subject A: " + subA);
-			System.out.println("Marks of subject B: " + subB);
-			System.out.println("Marks of subject C: " + subC);
-            double avg = (double)(subA+subB+subC)/3;
-            System.out.println("Average : "+avg);
-		}
-		
-		sc.close();
+	public static void main(String[] args) {
 
+		Data data = new Data();
+		data.add("Deepak");
+		data.add("Pulkit");
+		data.add("Saniya");
+		data.add("Ishan");
+
+		data.traverse();
+
+		System.out.println("\nReverse Traverse");
+		data.reverseTraverse();
+
+		System.out.print("\n");
+
+		boolean isFound = data.search("Saniya");
+		if(isFound) System.out.println("Saniya Found");
+		else System.out.println("Saniya Not Found");
 	}
 
 }
